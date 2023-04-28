@@ -1,0 +1,18 @@
+{
+    "name": "codemanas/woomail",
+    "type": "project",
+    "license": "GPL2",
+    "autoload": {
+        "psr-4": {
+            "Codemanas\\Woomail\\": "inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dipin-bajra",
+            "email": "dipin.bajracharya@codemanas.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
