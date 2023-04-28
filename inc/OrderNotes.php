@@ -21,9 +21,11 @@ class OrderNotes
         add_action( 'woocommerce_thankyou', array($this, 'add_order_note_zoom_meeting_created') );
     }
 
-    function add_order_note_zoom_meeting_created( $order_id ) {
+    function add_order_note_zoom_meeting_created( $order_id) {
         $order = wc_get_order( $order_id );
         $items = $order->get_items();
+
+
 
         foreach( $items as $item ) {
             $product_id = $item->get_product_id();
@@ -31,10 +33,10 @@ class OrderNotes
 
             if ( $product->is_type( 'simple' ) && $product->get_meta( '_vczapi_enable_zoom_link' ) == 'yes' ) {
                 // Get the Zoom meeting ID from the order item meta data
-                $zoom_meeting_id = $product-> get_meta( '_vczapi_wc_recording_host' );
-                var_dump($zoom_meeting_id);
+                $product_post_id = $product ->get_meta('_vczapi_zoom_post_id');
+                $zoom_meeting_id =  get_post_meta(  $product_post_id ,'_meeting_zoom_meeting_id', true );
                 // Add the Zoom meeting ID to the order note
-                $order_note = 'Zoom meeting created with ID' . $zoom_meeting_id;
+                $order_note = 'Zoom meeting created with ID ' . $zoom_meeting_id;
                 $order->add_order_note( $order_note );
                 break;
             }
