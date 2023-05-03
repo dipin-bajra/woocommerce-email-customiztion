@@ -32,6 +32,7 @@ class Bootstrap
         Maps::get_instance();
         Discount::get_instance();
         OrderNotes::get_instance();
+        ShippingMethod::get_instance();
 
     }
 
