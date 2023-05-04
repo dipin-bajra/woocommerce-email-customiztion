@@ -59,6 +59,12 @@ class ShippingMethod
 					}
 				}
 			}
+		}else{
+			foreach ( $rates as $rate_key => $rate ) {
+				if ( 'free_shipping' === $rate->method_id ) {
+					unset( $rates[ $rate_key ] );
+				}
+			}
 		}
 		return $rates;
 	}
